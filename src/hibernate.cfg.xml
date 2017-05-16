@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 下边这行是原始配置 -->
+    <!-- <session-factory  name="HibernateSessionFactory" > -->
+    <session-factory>
+      <!-- 
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">857473</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/shop</property>
+        <property name="hibernate.connection.username">root</property>
+        -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">true</property>
+        <!-- 配置二级缓存提供商 -->
+         
+        <property name="hibernate.cache.region.factory_class"> org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+         
+        <!-- <mapping resource="hibernateEntity/Category.hbm.xml" />
+        <mapping resource="cn/it/shop/model/Account.hbm.xml" /> -->
+    	<mapping class="cn.it.shop.model.Account"/>
+    	<mapping class="hibernateEntity.Category"/>
+     	<mapping class="cn.it.shop.model.Product"/>
+     	<mapping class="cn.it.shop.model.User"/>
+     	<mapping class="cn.it.shop.model.Status"/>
+     	<mapping class="cn.it.shop.model.Sorder"/>
+     	<mapping class="cn.it.shop.model.Forder"/>
+     	<!-- 配置哪些类支持二级缓存 -->
+     	
+     	<class-cache usage="read-write" class="cn.it.shop.model.Product"/>
+    
+    </session-factory>
+</hibernate-configuration>
